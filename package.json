@@ -1,0 +1,9 @@
+{
+  "name": "firefly",
+  "description": "A node.js service that runs a set of ARMA III servers, as well as providing API and persistence features to them.",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
