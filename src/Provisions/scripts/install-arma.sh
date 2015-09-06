@@ -39,13 +39,14 @@
 
 
 # Run SteamCMD and install ARMA III
-    ./steamcmd.sh +login <%= steam_username %> <%= steam_password %> +force_install_dir ../arma3 +app_update 233780 +validate
+    ./steamcmd.sh +login <%= steam_username %> <%= steam_password %> +force_install_dir ../arma +app_update 233780 +validate +quit
 
 
 # Install RRF Modpack
-    cd ../arma
-    wget "http://content.1st-rrf.com/Modpack.zip"
-    unzip Modpack.zip
+    #cd ../arma
+    #wget "http://content.1st-rrf.com/Modpack.zip"
+    #unzip Modpack.zip
+    #rm -rf Modpack.zip
 
 # Install SockRPC
     wget "https://bitbucket.org/micovery/sock.dll/raw/v0.0.2/Release/sock.so"

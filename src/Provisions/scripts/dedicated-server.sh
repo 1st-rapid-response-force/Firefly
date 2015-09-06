@@ -13,10 +13,12 @@
 # server_password - String - The password used by the server to authenticate connecting players
 # server_admin_password - String - The password used by a user to assume Administrator responsibilities on the server.
 # server_command_password - String - Alternate password used to authenticate scripting commands.
+# rcon_password - String - Used by Firefly to connect and monitor
 # vote_players - Integer - Number of players required to activate voting
-# voteThreshold - Integer - Integer percentage required for affirmative vote.
+# vote_threshold - Integer - Integer percentage required for affirmative vote.
 # headless_client_ips - Array[String] - Array of the headless clients IPs for this server
 # mission_name - String - The name of the mission file to download.
+# rotor_lib_simulation - Integer - Rotor Lib Simulation
 
 
 ##########################
@@ -45,12 +47,17 @@ cd ~/arma
     echo 'timeStampFormat = "full";' >> server.cfg
 
 
+    # Rotor Lib Forced
+
+    echo 'forceRotorLibSimulation = <%= rotor_lib_simulation %>;' >> server.cfg
+
+
     # Message of the Day
 
-    echo 'motd[] = {' >> server.cfg
-    echo '<%= messages_of_the_day %>' >> server.cfg
-    echo '};' >> server.cfg
-    echo 'motdInterval = 5;' >> server.cfg
+    #echo 'motd[] = {' >> server.cfg
+    #echo '<%= messages_of_the_day %>' >> server.cfg
+    #echo '};' >> server.cfg
+    #echo 'motdInterval = 5;' >> server.cfg
 
 
     # Passwords
@@ -61,16 +68,19 @@ cd ~/arma
 
 
     # Voting
+
     echo 'voteMissionPlayers = <%= vote_players %>;' >> server.cfg
     echo 'voteThreshold = <%= vote_threshold %>;' >> server.cfg
 
 
     # VON - Disabled on all RRF servers
+
     echo 'disableVoN = 1;' >> server.cfg
     echo 'vonCodecQuality = 0;' >> server.cfg
 
 
     # Server Security
+
     echo 'kickDuplicate = 1;' >> server.cfg
     echo 'verifySignatures = 2;' >> server.cfg
     echo 'allowedFilePatching = 0;' >> server.cfg
@@ -87,6 +97,7 @@ cd ~/arma
 
 
     # Headless Clients
+
     echo 'localClient[]={<%= headless_client_ips %>};' >> server.cfg
     echo 'headlessClients[]={<%= headless_client_ips %>};' >> server.cfg
 
@@ -99,3 +110,15 @@ cd ~/arma
     cd ~/arma/mpmissions
     wget "http://content.1st-rrf.com/missions/<%= mission_name %>"
 
+#
+# Setup the BE Config
+#
+
+    # Move to BE Directory
+
+    cd ~/arma/battleye
+
+
+    # Write out admin password so that RCon Monitor can connect later
+
+    echo 'Rconpassword  <%= rcon_password %>' >> BE.cfg
