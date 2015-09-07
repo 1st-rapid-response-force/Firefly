@@ -214,7 +214,7 @@ Server.prototype.start = function() {
     var execString = "cd ~/arma && nohup " + startupCommand + " > server_console_log.out 2> server_error_log.err < /dev/null &"
 
     var execPromise = stopCheck.bind(this).then(() => {
-        this.session.executedAsync(execString)
+        this.session.executeAsync(execString)
     })
 
     return execPromise
