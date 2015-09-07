@@ -3,3 +3,5 @@ server.cfg
 node_modules
 
 .idea
+
+.env
