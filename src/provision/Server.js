@@ -40,7 +40,7 @@ Server.prototype.create = function() {
 
     // Create a Digital Ocean droplet for this server
     var dropletSettings = {
-        "name": this.name,
+        "name": 'firefly' + this.name,
         "region": this.cluster.network.region,
         "size": this.size,
         "image": "ubuntu-14-04-x64",
@@ -193,7 +193,10 @@ Server.prototype.start = function() {
 
     // Once there is a confirmation that no server is running, compose the startup line
     var paramaters = {
-
+        mod: "@cba_a3\;@ace\;@task_force_radio\;@rhs_afrf\;@rhs_usaf\;@1rrf_troops\;@1rrf_maps\;@1rrf_utility\;",
+        pid: "firefly-pid",
+        port: "2302",
+        config: "server.cfg"
     }
 
     // Finalize the paramaters into a string
@@ -211,7 +214,7 @@ Server.prototype.start = function() {
     // Execute the command on the remote server. Make use of nohup to make sure that if connection is detached server
     //  continues to execute.
 
-    var execString = "cd ~/arma && nohup " + startupCommand + " > server_console_log.out 2> server_error_log.err < /dev/null &"
+    var execString = "cd ~/arma && nohup " + startString + " > server_console_log.out 2> server_error_log.err < /dev/null &"
 
     var execPromise = stopCheck.bind(this).then(() => {
         this.session.executeAsync(execString)

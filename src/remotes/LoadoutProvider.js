@@ -15,7 +15,7 @@ var popsicle = require('popsicle' ),
 function LoadoutProvider(socket) {
 
     // Register a handler to the socket
-    socket.register('GET_LOADOUT', this.handleSocketEvent)
+    socket.register('GET_LOADOUT', this.handleSocketEvent.bind(this))
 
 }
 
@@ -46,12 +46,13 @@ LoadoutProvider.prototype.getLoadout = function(uuid) {
     // Once the api Request is complete, reformat the the data into an array of couplets
     var formattedResponse = apiRequest.then((response) => {
 
-        var loadoutArray = _.map(response.body.loadout, (item) => {
-
+        var loadoutArray = _.map(JSON.parse(response.body).loadout, (item) => {
+            console.log(item)
             return [item.category, item.class_name]
 
         })
 
+        console.log(loadoutArray)
         return loadoutArray
 
     })

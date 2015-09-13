@@ -3,12 +3,17 @@
   "description": "A node.js service that runs a set of ARMA III servers, as well as providing API and persistence features to them.",
   "version": "0.0.1",
   "main": "src/index.js",
+  "scripts": {
+    "start": "node --harmony_arrow_functions src/index --port=10000 --host=192.168.1.26 --trace-recv"
+  },
   "dependencies": {
     "bluebird": "^2.9.34",
     "dotenv": "^1.2.0",
     "dropletapi": "^3.1.0",
+    "express": "^4.13.3",
     "nodemiral": "^1.1.0",
     "popsicle": "^1.1.0",
+    "sock-rpc": "^1.0.6",
     "underscore": "^1.8.3"
   }
 }

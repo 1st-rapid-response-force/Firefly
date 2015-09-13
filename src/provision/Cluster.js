@@ -32,7 +32,7 @@ function Cluster(name, formattedName, headless_clients, password, admin_password
 Cluster.prototype.provision = function() {
 
     // Provision one dedicated server
-    var dedicatedServer = new Server(this.name + '-dedicated-server', this, 'server', "1gb")
+    var dedicatedServer = new Server(this.name + '-dedicated-server', this, 'server', "4gb")
     this.servers.push(dedicatedServer)
     var dedicatedServerProcessing = dedicatedServer.create()
 
@@ -42,7 +42,7 @@ Cluster.prototype.provision = function() {
 
     for (var i = 0; i < this.headless_client_number; i++ ) {
 
-        var headlessClient = new Server(this.name + '-headless-client-' + i, this, 'client', "512mb")
+        var headlessClient = new Server(this.name + '-headless-client-' + i, this, 'client', "1gb")
 
         this.servers.push(headlessClient)
 

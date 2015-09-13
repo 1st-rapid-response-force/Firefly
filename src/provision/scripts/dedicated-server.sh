@@ -107,8 +107,8 @@ cd ~/arma
 
     # Download missions from asset server
 
-    cd ~/arma/mpmissions
-    wget "http://content.1st-rrf.com/missions/<%= mission_name %>"
+    #cd ~/arma/mpmissions
+    #wget "http://content.1st-rrf.com/missions/<%= mission_name %>"
 
 #
 # Setup the BE Config

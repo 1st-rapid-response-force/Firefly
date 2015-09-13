@@ -43,10 +43,10 @@
 
 
 # Install RRF Modpack
-    #cd ../arma
-    #wget "http://content.1st-rrf.com/Modpack.zip"
-    #unzip Modpack.zip
-    #rm -rf Modpack.zip
+    cd ../arma
+    wget "http://content.1st-rrf.com/Modpack.zip"
+    unzip Modpack.zip
+    rm -rf Modpack.zip
 
 # Install SockRPC
     wget "https://bitbucket.org/micovery/sock.dll/raw/v0.0.2/Release/sock.so"
